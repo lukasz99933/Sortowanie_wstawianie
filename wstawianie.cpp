@@ -1,121 +1,62 @@
-//Sortowanie przez wstawianie.
+// Sortowanie przez wstawianie.
 
-#include<iostream>
-
-
+#include <iostream>
 
 using namespace std;
 
-
-
 class Tablica
-
 {
-
-    int n=20; //rozmiar tablicy
-
-    int *tablica=new int[n]; //tablica alokowana dynamicznie
-
+  int n = 20;                // rozmiar tablicy
+  int* tablica = new int[n]; // tablica alokowana dynamicznie
 public:
-
-    void sortowanie(int i); //Metoda do sortowania
-
-    void wyswietlanie(); //Metoda do wyświetlania
-
-    Tablica(); //konstruktor
-    ~Tablica();
-
+  void sortowanie(int i); // Metoda do sortowania
+  void wyswietlanie();    // Metoda do wyświetlania
+  Tablica();              // konstruktor
+  ~Tablica();
 };
 
-
-
 Tablica::Tablica()
-
 {
-
-   for( int i=0;i<n;i++)
-
-    {
-
-        tablica[i]=(rand()%50);
-
-    }
-
+  for (int i = 0; i < n; i++) {
+    tablica[i] = (rand() % 50);
+  }
 }
 
 Tablica::~Tablica()
-
 {
-	delete[] tablica;
+  delete[] tablica;
 }
 
-
-void Tablica::sortowanie(int i)
-
+void
+Tablica::sortowanie(int i)
 {
-
-    if(i<n)
-
-    {
-
-        int j=i;
-
-        while(tablica[j]<tablica[j-1] && j>0)
-
-        {
-
-            int a;
-
-            a=tablica[j];
-
-            tablica[j]=tablica[j-1];
-
-            tablica[j-1]=a;
-
-            j--;
-
-        }
-
-        sortowanie(i+1);
-
+  if (i < n) {
+    int j = i;
+    while (tablica[j] < tablica[j - 1] && j > 0) {
+      int a;
+      a = tablica[j];
+      tablica[j] = tablica[j - 1];
+      tablica[j - 1] = a;
+      j--;
     }
-
-    else
-
-        return;
-
+    sortowanie(i + 1);
+  } else
+    return;
 }
 
-
-
-void Tablica::wyswietlanie()
-
+void
+Tablica::wyswietlanie()
 {
-
-    for(int k=0;k<n;k++)
-
-    {
-
-        cout<<tablica[k]<<"\t";
-
-    }
-
+  for (int k = 0; k < n; k++) {
+    cout << tablica[k] << "\t";
+  }
 }
 
-
-
-int main()
-
+int
+main()
 {
-
-    Tablica K;
-
-    K.sortowanie(1);
-
-    K.wyswietlanie();
-
-    return 0;
-
+  Tablica K;
+  K.sortowanie(1);
+  K.wyswietlanie();
+  return 0;
 }
-
-
